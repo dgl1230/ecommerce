@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load filename %}
+
+{% block content %}
+
+{% if in_cart %}
+
+<a href='{% url "cart" %}'>View Cart</a>
+
+{% else %}
+
+<a href='{% url "update_cart" product.id %}'>Add to Cart</a>
+
+{% endif %}
+
+<h1>{{ product }}</h1>
+
+{% for abc in images %}
+	<img src="{{ MEDIA_URL }}{{ abc.image }}" width='500' />
+{% endfor %}
+
+
+
+<ul>
+{% for category in categories %}
+
+<li>{{ category }}</li>
+
+{% endfor %}
+</ul>
+
+
+{% if edit %}
+
+<a href="#">Edit</a>
+
+{% endif %}
+{% endblock %}
